@@ -6,10 +6,12 @@
 //  Copyright © 2020 Gregor Konzett. All rights reserved.
 //
 
-#include <iostream>
+#include "Shell.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Shell shell;
+    
+    shell.run();
+    
     return 0;
 }
