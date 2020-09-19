@@ -13,10 +13,9 @@ int ProcessHandler::exec(Command command) {
 }
 
 void ProcessHandler::startProcess(Command command) {
-    pid_t pid;
     int status;
     
-    pid = fork();
+    pid_t pid = fork();
     if (pid == 0) {
         if (exec(command) == -1) {
             perror("shell");

@@ -12,7 +12,7 @@ Command Shell::readCommand() {
     string input;
     std::getline(std::cin, input);
     Command command(input);
-    //commandHistory_.push_back(command);
+    commandHistory_.push_back(command);
     return command;
 }
 
