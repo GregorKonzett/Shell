@@ -16,29 +16,6 @@ Command Shell::readCommand() {
     return command;
 }
 
-int Shell::exec(Command command) {
-    return execvp(command.args().at(0), command.args().data());
-}
-
-void Shell::startProcess(Command command) {
-    pid_t pid;
-    int status;
-    
-    pid = fork();
-    if (pid == 0) {
-        if (exec(command) == -1) {
-            perror("shell");
-        }
-        exit(EXIT_FAILURE);
-    } else if (pid < 0) {
-        perror("shell");
-    } else {
-        do {
-            waitpid(pid, &status, WUNTRACED);
-        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-    }
-}
-
 bool Shell::isCommand(char *input, char *command) {
     while(*input != '\0') {
         if(*input != *command) return false;
@@ -50,11 +27,10 @@ bool Shell::isCommand(char *input, char *command) {
 }
 
 void Shell::executeCommand(Command command) {
-    if(isCommand(command.command(), "cd")) {
-        //cout << "do cd" << std::endl;
+    if(isCommand(command.command(), const_cast<char*>("cd"))) {
         chdir(command.args().at(1));
     } else {
-        startProcess(command);
+        processHandler_.startProcess(command);
     }
 }
 
@@ -66,6 +42,9 @@ void Shell::run() {
     do {
         cout << getcwd(buffer, 255) << "> ";
         Command command = readCommand();
+        
+        if(command.args().at(0) == NULL) continue;
+        
         executeCommand(command);
     } while(status);
 }

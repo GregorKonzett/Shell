@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		815B59DE25167649000785AD /* ProcessHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 815B59DC25167649000785AD /* ProcessHandler.cpp */; };
 		81A52B28250F6C4400FC36BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A52B27250F6C4400FC36BD /* main.cpp */; };
 		81A52B33250F8E3400FC36BD /* Shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A52B31250F8E3400FC36BD /* Shell.cpp */; };
 		81A52B36250F978C00FC36BD /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A52B34250F978C00FC36BD /* Command.cpp */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		815B59DC25167649000785AD /* ProcessHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProcessHandler.cpp; sourceTree = "<group>"; };
+		815B59DD25167649000785AD /* ProcessHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProcessHandler.hpp; sourceTree = "<group>"; };
 		81A52B24250F6C4400FC36BD /* Shell */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Shell; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A52B27250F6C4400FC36BD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		81A52B31250F8E3400FC36BD /* Shell.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shell.cpp; sourceTree = "<group>"; };
@@ -76,6 +79,8 @@
 				81A52B32250F8E3400FC36BD /* Shell.hpp */,
 				81A52B34250F978C00FC36BD /* Command.cpp */,
 				81A52B35250F978C00FC36BD /* Command.hpp */,
+				815B59DC25167649000785AD /* ProcessHandler.cpp */,
+				815B59DD25167649000785AD /* ProcessHandler.hpp */,
 			);
 			path = Shell;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815B59DE25167649000785AD /* ProcessHandler.cpp in Sources */,
 				81A52B33250F8E3400FC36BD /* Shell.cpp in Sources */,
 				81A52B36250F978C00FC36BD /* Command.cpp in Sources */,
 				81A52B28250F6C4400FC36BD /* main.cpp in Sources */,

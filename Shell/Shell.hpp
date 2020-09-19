@@ -11,10 +11,7 @@
 
 #include <iostream>
 #include <vector>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-
+#include "ProcessHandler.hpp"
 #include "Command.hpp"
 
 using std::vector;
@@ -28,9 +25,9 @@ public:
     
 private:
     vector<Command> commandHistory_;
+    ProcessHandler processHandler_;
+    
     void executeCommand(Command command);
-    int exec(Command command);
-    void startProcess(Command command);
     bool isCommand(char* input, char* command);
     Command readCommand();
 };
