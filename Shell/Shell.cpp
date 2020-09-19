@@ -21,27 +21,21 @@ int Shell::exec(Command command) {
 }
 
 void Shell::startProcess(Command command) {
-    pid_t pid, wpid;
+    pid_t pid;
     int status;
     
     pid = fork();
     if (pid == 0) {
-        status = exec(command);
-        
-        if (status == -1) {
-            perror("a");
-        } else {
-            cout << "Status: " << status << std::endl;
+        if (exec(command) == -1) {
+            perror("shell");
         }
-      exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     } else if (pid < 0) {
-      // Error forking
-      perror("b");
+        perror("shell");
     } else {
-      // Parent process
-      do {
-        wpid = waitpid(pid, &status, WUNTRACED);
-      } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+        do {
+            waitpid(pid, &status, WUNTRACED);
+        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
 }
 
@@ -56,7 +50,12 @@ bool Shell::isCommand(char *input, char *command) {
 }
 
 void Shell::executeCommand(Command command) {
-    startProcess(command);
+    if(isCommand(command.command(), "cd")) {
+        //cout << "do cd" << std::endl;
+        chdir(command.args().at(1));
+    } else {
+        startProcess(command);
+    }
 }
 
 void Shell::run() {
