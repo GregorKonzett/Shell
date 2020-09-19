@@ -11,6 +11,8 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
+#include <iostream>
 
 using std::vector;
 using std::string;
@@ -18,10 +20,11 @@ using std::string;
 class Command {
 public:
     Command(string input);
-    vector<string> args();
+    vector<char*> args();
+    char* command();
     
 private:
-    vector<string> args_;
+    vector<char*> args_;
     
     void parse_input(string input);
 };

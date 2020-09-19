@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <unistd.h>
+#include <stdlib.h>
 #include <sys/wait.h>
 
 #include "Command.hpp"
@@ -28,7 +29,9 @@ public:
 private:
     vector<Command> commandHistory_;
     void executeCommand(Command command);
-    
+    int exec(Command command);
+    void startProcess(Command command);
+    bool isCommand(char* input, char* command);
     Command readCommand();
 };
 

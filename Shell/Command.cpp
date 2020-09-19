@@ -13,21 +13,23 @@ Command::Command(string input) {
 }
 
 void Command::parse_input(string input) {
-    size_t pos = 0;
+    std::istringstream iss(input);
     
-    while(input.length() > 0) {
-        pos = input.find(" ");
+    for(std::string s; iss >> s;) {
+        size_t size = s.size();
+        char *buf = new char[size + 1];
+        memcpy(buf, s.c_str(), size + 1);
         
-        if(pos == string::npos) {
-            args_.push_back(input);
-            break;
-        } else {
-            args_.push_back(input.substr(0, pos));
-            input.erase(0, pos + 1);
-        }
+        args_.push_back(buf);
     }
+    
+    args_.push_back(NULL);
 }
 
-vector<string> Command::args() {
+char* Command::command() {
+    return args_.front();
+}
+
+vector<char*> Command::args() {
     return args_;
 }
